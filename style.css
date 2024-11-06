@@ -816,7 +816,7 @@ form .entrybox{
    }
    .page .heading{
       font-size: 4vw;
-      padding-top: 4em;
+      padding-top: 2em;
    }
    .page .heading::after{
       width: 15%;
@@ -867,7 +867,7 @@ form .entrybox{
       margin-bottom: -0.5vw;
    }
    .details p{
-      font-size: 1.6vw;
+      font-size: 2vw;
       max-width: 100%;
       margin-top: 10vw;
    }
@@ -890,7 +890,7 @@ form .entrybox{
    }
    .Project .wrapper{
       grid-template-columns: repeat(2,42vw);
-      grid-template-rows: repeat(3,28vw);
+      grid-template-rows: repeat(6,28vw);
       gap: 3vw 1.5vw;
       margin-top: 15vw;
    }
@@ -900,11 +900,15 @@ form .entrybox{
 
    /* style skills section */
    .Skills .wrapper-1{
+      grid-template-columns: repeat(2,42vw);
+      grid-template-rows: repeat(2,28vw);
       flex-direction: column;
       align-items: center;
       margin-top: 3em;
    }
    .Skills .wrapper-2{
+      grid-template-columns: repeat(8,7vw);
+      grid-template-rows: repeat(3,7vw);
       flex-direction: column;
       align-items: center;
       margin-top: 3em;
