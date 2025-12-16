@@ -7,6 +7,7 @@
 @theme inline {
   --animate-gradient: gradient 8s linear infinite;
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
+  --animate-shine: shine var(--duration) infinite linear;
 
   @keyframes gradient {
     to {
@@ -36,12 +37,32 @@
       transform: rotate(-5deg) scale(0.9);
     }
   }
+
+  @keyframes shine {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    to {
+      background-position: 0% 0%;
+    }
+  }
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Disable default cross-fade for the view transition */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
+}
+
+/* Ensure the new view is always on top, so the circle expands OVER the old view */
+::view-transition-new(root) {
+  z-index: 2147483646; /* A very high z-index to sit on top */
 }
 
 * {

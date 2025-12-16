@@ -1,3 +1,6 @@
+import ghostlyGamersImg from '../assets/images/ghostly-gamers.png';
+import autoAiderImg from '../assets/images/auto-aider.png';
+
 export const personalInfo = {
   name: "Glenson Montellano Ansin",
   role: "Full-Stack Developer",
@@ -5,6 +8,72 @@ export const personalInfo = {
   location: "Cagayan de Oro, Philippines",
   about: {
     paragraph1: "I am a graduating Information Technology student at the University of Science and Technology of Southern Philippines (USTP). With a strong foundation in full-stack development, I specialize in building scalable web and mobile applications using React and Express.js. For me, coding is more than just writing code, it's about turning abstract ideas into tangible, user-friendly realities. I am constantly refining my coding practices, ensuring that the applications I build are robust, maintainable, and up to modern industry standards.",
-    paragraph2: "When I'm not debugging or architecting systems, you can find me immersing myself in video games, exploring new movies, or curating music playlists. I believe that maintaining a creative balance outside of coding keeps my problem-solving skills sharp."
-  }
+    paragraph2: "When I'm not debugging or architecting systems, you can find me immersing myself in video games, exploring new movies, or curating music playlists. I believe that maintaining a creative balance outside of coding keeps my problem-solving skills sharp.",
+  },
+  techStack: [
+    "react",
+    "reactrouter",
+    "express",
+    "html5",
+    "css",
+    "tailwindcss",
+    "javascript",
+    "typescript",
+    "cplusplus",
+    "vite",
+    "python",
+    "php",
+    "socketdotio",
+    "expo",
+    "figma",
+    "git",
+    "nextdotjs",
+    "nodedotjs",
+    "postgresql",
+    "mysql",
+    "mongodb",
+    "vercel",
+    "render",
+    "jsonwebtokens",
+    "github",
+    "eslint",
+    "firebase",
+    "daisyui",
+    "postman",
+    "redux",
+    "prettier",
+    "nodemon",
+    "bootstrap",
+    "googlecloud",
+  ],
+  experience: [
+    {
+      role: "Full-Stack Developer",
+      appName: "Auto AIDER (Capstone Project)",
+      company: "University of Science and Technology of Southern Philippines",
+      duration: "Jan 2025 - Dec 2025",
+      techStack: [
+        "React Native",
+        "Express.js",
+        "Neon",
+        "Socket.io",
+        "Redux",
+      ],
+      shortDescription: "Led the development of Auto AIDER, a mobile vehicle diagnostic system designed to interpret OBD-II trouble codes for non-technical users and allow them to find a nearby repair shops registered in the app.",
+    }
+  ],
+  projects: [
+    {
+      projectName: "Ghostly Gamers",
+      description: "A website to find games to play in various platforms.",
+      link: "https://ghostlygamers.vercel.app/",
+      img: {ghostlyGamersImg},
+    },
+    {
+      projectName: "Auto AIDER",
+      description: "A smart car diagnostic app using OBD-II with auto repair shop locator.",
+      link: "https://github.com/GlensonAnsin/auto-aider-app/releases/tag/v1.0.0-beta.1",
+      img: {autoAiderImg},
+    },
+  ],
 }
