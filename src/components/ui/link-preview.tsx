@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 import { encode } from 'qss';
 import React from 'react';
@@ -22,8 +21,6 @@ export const LinkPreview = ({
   className,
   width = 200,
   height = 125,
-  quality = 50,
-  layout = 'fixed',
   isStatic = false,
   imageSrc = '',
 }: LinkPreviewProps) => {
