@@ -7,7 +7,6 @@ import { cn } from '../../utils/aceternity';
 export const CardSpotlight = ({
   children,
   radius = 350,
-  color = '#262626',
   className,
   ...props
 }: {
@@ -29,19 +28,15 @@ export const CardSpotlight = ({
   const handleMouseLeave = () => setIsHovering(false);
   return (
     <div
-      className={cn(
-        'group/spotlight p-10 rounded-md relative border border-neutral-800 bg-black dark:border-neutral-800',
-        className
-      )}
+      className={cn('group/spotlight p-10 rounded-md relative shadow-xl', className)}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       {...props}
     >
       <motion.div
-        className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100"
+        className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100 bg-indigo-950"
         style={{
-          backgroundColor: color,
           maskImage: useMotionTemplate`
             radial-gradient(
               ${radius}px circle at ${mouseX}px ${mouseY}px,
