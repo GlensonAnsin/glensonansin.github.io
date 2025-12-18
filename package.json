@@ -2,7 +2,7 @@
   "name": "glensonansin.github.io",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://glensonansin.github.io",
+  "homepage": "https://glensonansin.github.io/",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -9,10 +9,10 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: "glensonansin.github.io",
+  base: "/",
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve("./src"),
     },
   },
 })
