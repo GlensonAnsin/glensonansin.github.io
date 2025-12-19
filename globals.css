@@ -9,6 +9,7 @@
   --animate-gradient: gradient 8s linear infinite;
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
   --animate-shine: shine var(--duration) infinite linear;
+  --animate-rippling: rippling var(--duration) ease-out;
 
   @keyframes gradient {
     to {
@@ -50,6 +51,16 @@
       background-position: 0% 0%;
     }
   }
+
+  @keyframes rippling {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -66,6 +77,10 @@
   z-index: 2147483646; /* A very high z-index to sit on top */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   font-family: "Inter", sans-serif;
   cursor: none !important;
@@ -75,4 +90,10 @@ input,
 textarea,
 select {
   cursor: text !important;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  #custom-cursor {
+    display: none !important;
+  }
 }

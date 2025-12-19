@@ -1,11 +1,8 @@
-import { TextHoverEffect } from './components/ui/text-hover-effect';
-import { EncryptedText } from './components/ui/encrypted-text';
 import { ScrollProgress } from './components/ui/scroll-progress';
 import { ReactLenis, useLenis } from 'lenis/react';
 import { AnimatedGradientText } from './components/ui/animated-gradient-text';
 import { AuroraText } from './components/ui/aurora-text';
 import { CometCard } from './components/ui/comet-card';
-import formalPic from './assets/images/formal-pic.jpg';
 import { personalInfo } from './data/personal-information';
 import { CardSpotlight } from './components/ui/card-spotlight';
 import { CardBody, CardContainer, CardItem } from './components/ui/3d-card';
@@ -18,6 +15,8 @@ import { Mail, Linkedin, Facebook } from 'lucide-react';
 import { LinkPreview } from './components/ui/link-preview';
 import { Particles } from './components/ui/particles';
 import { SmoothCursor } from './components/ui/smooth-cursor';
+import { EncryptedText } from './components/ui/encrypted-text';
+import { RippleButton } from './components/ui/ripple-button';
 
 function App() {
   useLenis((lenis) => {
@@ -35,33 +34,56 @@ function App() {
       <SmoothCursor />
 
       <section className="h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-indigo-950/30">
-        <div className="flex flex-col items-center justify-center w-full">
-          <TextHoverEffect text="GLENSON ANSIN" />
-          <h2 className="text-2xl relative z-20 md:text-4xl lg:text-7xl font-bold text-center text-black dark:text-white font-sans tracking-tight">
-            <div className="relative mx-auto inline-block w-max [filter:drop-shadow(0px_1px_3px_rgba(27,_37,_80,_0.14))]">
-              <AnimatedGradientText>Full-Stack Developer</AnimatedGradientText>
-            </div>
-            <br />
+        <div className="mx-[5%]">
+          <h1 className="text-5xl relative z-20 md:text-5xl lg:text-8xl font-bold text-center text-black dark:text-white tracking-tight">
+            <AnimatedGradientText>Glenson Ansin</AnimatedGradientText>
+          </h1>
+          <h2 className="text-3xl relative z-20 md:text-3xl lg:text-6xl text-center">
             <EncryptedText
-              text="specializing in React and Express.js"
+              text="Software Developer"
               encryptedClassName="text-neutral-500"
-              revealedClassName="dark:text-white text-black"
+              revealedClassName="text-slate-100"
               revealDelayMs={50}
             />
           </h2>
+          <p className="mt-5 max-w-150 place-self-center text-center">
+            I specialize in building full-stack robust React applications and streamlining complex workflows with
+            Python. Let's turn your abstract ideas into user-friendly realities.
+          </p>
+          <div className="mt-5 flex items-center justify-center gap-5 flex flex-col md:flex-row">
+            <RippleButton
+              rippleColor="#add8e6"
+              className="bg-indigo-950 text-slate-100 border-1 border-indigo-500/50 shadow-lg hover:bg-indigo-900 transition-colors w-full md:w-41"
+            >
+              <a
+                href="/Ansin_Resume.pdf"
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2"
+              >
+                <i className="uil uil-import"></i>Download CV
+              </a>
+            </RippleButton>
+            <RippleButton
+              rippleColor="#add8e6"
+              className="text-slate-100 border-1 border-indigo-500/50 shadow-lg hover:bg-indigo-900 transition-colors w-full md:w-41"
+            >
+              <a href="#contact">Hire Me</a>
+            </RippleButton>
+          </div>
         </div>
       </section>
 
-      <section id="about" className="bg-indigo-950/60">
+      <section id="about" className="bg-indigo-950/60 pb-15">
         <div className="mx-[5%] md:mx-[8%] lg:mx-[10%] xl:mx-[15%]">
           <h3 className="text-5xl font-bold tracking-tighter text-center pt-10">
             <AuroraText>About Me</AuroraText>
           </h3>
           <div className="mt-10 flex flex-col xl:flex-row items-center justify-center xl:gap-20">
-            <CometCard className="w-fit">
-              <button
-                type="button"
-                className="my-10 bg-gray-50 dark:bg-indigo-950 flex w-80 items-stretch rounded-[16px] border-0 bg-[#1F2121] p-2 md:my-20 md:p-4"
+            <CometCard>
+              <div
+                className="bg-gray-50 w-60 mb-10 xl:mb-0 dark:bg-indigo-950 rounded-[16px] p-4 border-0 bg-[#1F2121]"
                 style={{
                   transformStyle: 'preserve-3d',
                   transform: 'none',
@@ -69,13 +91,15 @@ function App() {
                 }}
               >
                 <ShineBorder shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']} />
-                <div className="mx-2 flex-1">
-                  <div className="relative mt-2 aspect-[3/4] w-full">
+                <div className="flex-1">
+                  <div className="relative aspect-[3/4] w-full">
                     <img
                       loading="lazy"
-                      className="absolute inset-0 h-full w-full rounded-[16px] bg-[#000000] object-cover"
+                      height="1000"
+                      width="1000"
+                      className="w-fit h-fit rounded-[16px] bg-[#000000]"
                       alt="image"
-                      src={formalPic}
+                      src={personalInfo.photo.formalPic}
                       style={{
                         boxShadow: 'rgba(0, 0, 0, 0.05) 0px 5px 6px 0px',
                         opacity: 1,
@@ -83,7 +107,7 @@ function App() {
                     />
                   </div>
                 </div>
-              </button>
+              </div>
             </CometCard>
 
             <CardSpotlight className="self-center bg-gray-50 dark:bg-indigo-950">
@@ -161,14 +185,15 @@ function App() {
         </div>
       </section>
 
-      <section id="tech-stack" className="bg-indigo-950/60">
-        <div className="mx-[5%] md:mx-[8%] lg:mx-[10%] xl:mx-[15%]"></div>
-        <h3 className="text-5xl font-bold tracking-tighter text-center pt-10">
-          <AuroraText>Tech Stack</AuroraText>
-        </h3>
-        <div className="mt-10">
-          <div className="relative flex size-full items-center justify-center overflow-hidden">
-            <IconCloud images={icon} />
+      <section id="tech-stack" className="bg-indigo-950/60 pb-15">
+        <div className="mx-[5%] md:mx-[8%] lg:mx-[10%] xl:mx-[15%]">
+          <h3 className="text-5xl font-bold tracking-tighter text-center pt-10">
+            <AuroraText>Tech Stack</AuroraText>
+          </h3>
+          <div className="mt-10">
+            <div className="relative flex size-full items-center justify-center overflow-hidden">
+              <IconCloud images={icon} />
+            </div>
           </div>
         </div>
       </section>
@@ -194,25 +219,25 @@ function App() {
         </div>
       </section>
 
-      <section id="projects " className="bg-indigo-950/60 pb-20">
+      <section id="projects" className="bg-indigo-950/60 pb-20">
         <div className="mx-[5%] md:mx-[8%] lg:mx-[10%] xl:mx-[15%]">
           <h3 className="text-5xl font-bold tracking-tighter text-center pt-10">
             <AuroraText>Projects</AuroraText>
           </h3>
-          <div className="mt-10 flex flex-col gap-15 lg:flex-row lg:item-center lg:justify-center">
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-20 w-fit place-self-center">
             {personalInfo.projects.map((p) => (
-              <PinContainer title={p.link} href={p.link} className="w-fit">
-                <div className="flex flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
+              <PinContainer title={p.link} href={p.link} key={p.projectName}>
+                <div className="flex flex-col p-4 tracking-tight text-slate-100/50 w-[80vw] max-w-[20rem] h-[20rem]">
                   <h3 className="max-w-xs !pb-2 !m-0 font-bold text-xl text-neutral-600 dark:text-slate-100">
                     {p.projectName}
                   </h3>
                   <div className="text-base !m-0 !p-0 font-normal">
-                    <span className="text-slate-500 dark:text-neutral-300">{p.description}</span>
+                    <span className="text-slate-500 dark:text-neutral-300 line-clamp-2">{p.description}</span>
                   </div>
-                  <div className="relative flex-1 mt-4">
+                  <div className="relative flex-1 mt-4 overflow-hidden rounded-lg">
                     <img
                       src={p.img.ghostlyGamersImg || p.img.autoAiderImg}
-                      className="absolute w-full h-full rounded-lg"
+                      className="absolute inset-0 w-full h-full object-cover"
                       alt="thumbnail"
                     />
                   </div>
