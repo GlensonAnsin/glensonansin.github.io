@@ -8,15 +8,12 @@ import { CardSpotlight } from './components/ui/card-spotlight';
 import { CardBody, CardContainer, CardItem } from './components/ui/3d-card';
 import cocLogo from './assets/images/coc-logo.png';
 import ustpLogo from './assets/images/ustp-logo.png';
-import { IconCloud } from './components/ui/icon-cloud';
-import { ShineBorder } from './components/ui/shine-border';
 import { PinContainer } from './components/ui/3d-pin';
 import { Mail, Linkedin, Facebook } from 'lucide-react';
 import { LinkPreview } from './components/ui/link-preview';
 import { Particles } from './components/ui/particles';
 import { SmoothCursor } from './components/ui/smooth-cursor';
 import { EncryptedText } from './components/ui/encrypted-text';
-import { RippleButton } from './components/ui/ripple-button';
 
 function App() {
   useLenis((lenis) => {
@@ -24,7 +21,7 @@ function App() {
     console.log(lenis);
   });
 
-  const icon = personalInfo.techStack.map((icon) => `https://cdn.simpleicons.org/${icon}/${icon}`);
+  const icons = personalInfo.techStack.map((icon) => `https://cdn.simpleicons.org/${icon}/${icon}`);
 
   return (
     <main className="bg-neutral-950">
@@ -51,26 +48,25 @@ function App() {
             Python. Let's turn your abstract ideas into user-friendly realities.
           </p>
           <div className="mt-5 flex items-center justify-center gap-5 flex flex-col md:flex-row">
-            <RippleButton
-              rippleColor="#add8e6"
-              className="bg-indigo-950 text-slate-100 border-1 border-indigo-500/50 shadow-lg hover:bg-indigo-900 transition-colors w-full md:w-41"
-            >
+            <button>
               <a
                 href="/Ansin_Resume.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2"
+                className="flex items-center justify-center gap-2 bg-indigo-950 text-slate-100 border-1 border-indigo-500/50 shadow-lg hover:bg-indigo-900 transition-colors w-full md:w-41 p-2 rounded-lg"
               >
                 <i className="uil uil-import"></i>Download CV
               </a>
-            </RippleButton>
-            <RippleButton
-              rippleColor="#add8e6"
-              className="text-slate-100 border-1 border-indigo-500/50 shadow-lg hover:bg-indigo-900 transition-colors w-full md:w-41"
-            >
-              <a href="#contact">Hire Me</a>
-            </RippleButton>
+            </button>
+            <button>
+              <a
+                href="#contact"
+                className="flex items-center justify-center text-slate-100 border-1 border-indigo-500/50 shadow-lg hover:bg-indigo-900 transition-colors w-full md:w-41 p-2 rounded-lg"
+              >
+                Hire Me
+              </a>
+            </button>
           </div>
         </div>
       </section>
@@ -83,14 +79,13 @@ function App() {
           <div className="mt-10 flex flex-col xl:flex-row items-center justify-center xl:gap-20">
             <CometCard>
               <div
-                className="bg-gray-50 w-60 mb-10 xl:mb-0 dark:bg-indigo-950 rounded-[16px] p-4 border-0 bg-[#1F2121]"
+                className="bg-gray-50 w-60 mb-10 xl:mb-0 dark:bg-indigo-950 rounded-[16px] p-4 border-1 border-indigo-500/50"
                 style={{
                   transformStyle: 'preserve-3d',
                   transform: 'none',
                   opacity: 1,
                 }}
               >
-                <ShineBorder shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']} />
                 <div className="flex-1">
                   <div className="relative aspect-[3/4] w-full">
                     <img
@@ -110,8 +105,7 @@ function App() {
               </div>
             </CometCard>
 
-            <CardSpotlight className="self-center bg-gray-50 dark:bg-indigo-950">
-              <ShineBorder shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']} />
+            <CardSpotlight className="self-center bg-gray-50 dark:bg-indigo-950 border-1 border-indigo-500/50">
               <p className="text-neutral-600 dark:text-slate-100 text-lg md:text-xl lg:text-3xl font-bold mb-10 relative z-20">
                 {personalInfo.name}
               </p>
@@ -131,8 +125,7 @@ function App() {
           </h3>
           <div className="mt-10 flex flex-col lg:flex-row lg:item-center lg:justify-center lg:gap-20">
             <CardContainer className="inter-var h-full shadow-xl">
-              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-indigo-950 dark:border-white/[0.2] border-black/[0.1] w-fit md:w-[50%] lg:w-fit h-full rounded-xl p-6 border md:grid md:grid-cols-2 md:gap-5">
-                <ShineBorder shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']} />
+              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-indigo-950 border-1 border-indigo-500/50 w-fit md:w-[50%] lg:w-fit h-full rounded-xl p-6 border md:grid md:grid-cols-2 md:gap-5">
                 <CardItem translateZ="100">
                   <img
                     src={cocLogo}
@@ -157,8 +150,7 @@ function App() {
             </CardContainer>
 
             <CardContainer className="inter-var h-full shadow-xl">
-              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-indigo-950 dark:border-white/[0.2] border-black/[0.1] w-fit md:w-[50%] lg:w-fit h-full rounded-xl p-6 border md:grid md:grid-cols-2 md:gap-5">
-                <ShineBorder shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']} />
+              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-indigo-950 border-1 border-indigo-500/50 w-fit md:w-[50%] lg:w-fit h-full rounded-xl p-6 border md:grid md:grid-cols-2 md:gap-5">
                 <CardItem translateZ="100">
                   <img
                     src={ustpLogo}
@@ -190,10 +182,10 @@ function App() {
           <h3 className="text-5xl font-bold tracking-tighter text-center pt-10">
             <AuroraText>Tech Stack</AuroraText>
           </h3>
-          <div className="mt-10">
-            <div className="relative flex size-full items-center justify-center overflow-hidden">
-              <IconCloud images={icon} />
-            </div>
+          <div className="mt-10 flex items-center justify-center flex-wrap gap-10">
+            {icons.map((icon, index) => (
+              <img key={index} src={icon} alt="icon" className="w-20 h-20" />
+            ))}
           </div>
         </div>
       </section>
@@ -205,8 +197,7 @@ function App() {
           </h3>
           <div className="mt-10">
             {personalInfo.experience.map((exp) => (
-              <div className="w-fit xl:w-200 place-self-center bg-gray-50 relative group/card shadow-xl dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-indigo-950 dark:border-white/[0.2] border-black/[0.1] rounded-xl p-6 border">
-                <ShineBorder shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']} />
+              <div className="w-fit xl:w-200 place-self-center bg-gray-50 relative group/card shadow-xl dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-indigo-950 border-1 border-indigo-500/50 rounded-xl p-6 border">
                 <p className="text-neutral-600 dark:text-slate-100 text-2xl font-bold mb-5">{exp.duration}</p>
                 <p className="text-lg text-slate-500 dark:text-neutral-300">{exp.appName}</p>
                 <p className="text-lg text-slate-500 dark:text-neutral-300">{exp.company}</p>
@@ -298,7 +289,18 @@ function App() {
 
       <footer className="footer sm:footer-horizontal footer-center text-lg p-4 border-t-1 border-slate-500/20 bg-indigo-950">
         <aside>
-          <p>Copyright © {new Date().getFullYear()} - All right reserved by Glenson Ansin</p>
+          <p>© {new Date().getFullYear()} Glenson Ansin. All rights reserved.</p>
+          <div className="flex items-center gap-2 text-sm font-medium opacity-80 hover:opacity-100 transition-opacity">
+            <span>Built with</span>
+            <img src="https://cdn.simpleicons.org/react/react" alt="React" className="w-5 h-5" title="React" />
+            <img src="https://cdn.simpleicons.org/vite/vite" alt="Vite" className="w-5 h-5" title="Vite" />
+            <img
+              src="https://cdn.simpleicons.org/tailwindcss/tailwindcss"
+              alt="Tailwind CSS"
+              className="w-5 h-5"
+              title="Tailwind CSS"
+            />
+          </div>
         </aside>
       </footer>
     </main>
