@@ -47,22 +47,22 @@ function App() {
             I specialize in building full-stack robust React applications and streamlining complex workflows with
             Python. Let's turn your abstract ideas into user-friendly realities.
           </p>
-          <div className="mt-5 flex items-center justify-center gap-5 flex flex-col md:flex-row">
-            <button>
+          <div className="mt-5 flex items-center justify-center gap-5 flex-col sm:flex-row">
+            <button className="w-full sm:w-41">
               <a
                 href="/Ansin_Resume.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-indigo-950 text-slate-100 border-1 border-indigo-500/50 shadow-lg hover:bg-indigo-900 transition-colors w-full md:w-41 p-2 rounded-lg"
+                className="flex items-center justify-center gap-2 bg-indigo-950 text-slate-100 border-1 border-indigo-500/50 shadow-lg hover:bg-indigo-900 transition-colors p-2 rounded-lg"
               >
                 <i className="uil uil-import"></i>Download CV
               </a>
             </button>
-            <button>
+            <button className="w-full sm:w-41">
               <a
                 href="#contact"
-                className="flex items-center justify-center text-slate-100 border-1 border-indigo-500/50 shadow-lg hover:bg-indigo-900 transition-colors w-full md:w-41 p-2 rounded-lg"
+                className="flex items-center justify-center text-slate-100 border-1 border-indigo-500/50 shadow-lg hover:bg-indigo-900 transition-colors p-2 rounded-lg"
               >
                 Hire Me
               </a>
