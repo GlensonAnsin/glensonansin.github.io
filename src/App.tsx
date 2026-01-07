@@ -50,7 +50,7 @@ function App() {
           <div className="mt-5 flex items-center justify-center gap-5 flex-col sm:flex-row">
             <button className="w-full sm:w-41">
               <a
-                href="/Ansin_Resume.pdf"
+                href="/Resume.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"
