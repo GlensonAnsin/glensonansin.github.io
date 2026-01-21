@@ -227,7 +227,7 @@ function App() {
                   </div>
                   <div className="relative flex-1 mt-4 overflow-hidden rounded-lg">
                     <img
-                      src={p.img.ghostlyGamersImg || p.img.autoAiderImg}
+                      src={p.img.ghostlyGamersImg || p.img.autoAiderImg || p.img.ustpGPACalculatorImg}
                       className="absolute inset-0 w-full h-full object-cover"
                       alt="thumbnail"
                     />
