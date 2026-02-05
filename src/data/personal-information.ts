@@ -1,7 +1,8 @@
 import formalPic from '../assets/images/formal-pic.jpg';
 import ghostlyGamersImg from '../assets/images/ghostly-gamers.png';
 import autoAiderImg from '../assets/images/auto-aider.png';
-import ustpGPACalculatorImg from '../assets/images/ustp-gpa-calculator.png'
+import ustpGPACalculatorImg from '../assets/images/ustp-gpa-calculator.png';
+import luminaImg from '../assets/images/lumina.png';
 
 export const personalInfo = {
   name: "Glenson Montellano Ansin",
@@ -82,6 +83,12 @@ export const personalInfo = {
       description: "A website to calculate the GPA of the students of the USTP.",
       link: "https://ustpgpacalculator.vercel.app/",
       img: {ustpGPACalculatorImg},
+    },
+    {
+      projectName: "Lumina",
+      description: "A production-grade Express.js starter kit crafted with TypeScript.",
+      link: "https://github.com/GlensonAnsin/lumina",
+      img: {luminaImg},
     }
   ],
 }
