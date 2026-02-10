@@ -44,13 +44,13 @@ function App() {
             />
           </h2>
           <p className="mt-5 max-w-150 place-self-center text-center">
-            I specialize in building full-stack robust React applications and streamlining complex workflows with
-            Python. Let's turn your abstract ideas into user-friendly realities.
+            Specializing in creating both web and mobile applications. Driven by a simple mission: to take the most
+            ambitious ideas and develop them into existence.
           </p>
           <div className="mt-5 flex items-center justify-center gap-5 flex-col sm:flex-row">
             <button className="w-full sm:w-41">
               <a
-                href="/Resume.pdf"
+                href="/Ansin_Glenson_Resume.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"

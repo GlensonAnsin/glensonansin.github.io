@@ -10,7 +10,7 @@ export const personalInfo = {
   university: "University of Science and Technology of Southern Philippines",
   location: "Cagayan de Oro, Philippines",
   about: {
-    paragraph1: "I am a graduating Information Technology student at the University of Science and Technology of Southern Philippines (USTP). With a strong foundation in software development, I specialize in building scalable web and mobile applications using React and Express.js. For me, coding is more than just writing code, it's about turning abstract ideas into tangible, user-friendly realities. I also do automation with Python to streamline complex workflows like sales reporting. I am constantly refining my coding practices, ensuring that the applications I build are robust, maintainable, and up to modern industry standards.",
+    paragraph1: "I am Software Developer from the Philippines specializing in building scalable web and mobile applications. For me, coding is more than just writing code, it's about turning abstract ideas into tangible, user-friendly realities. I also do automation with Python to streamline complex workflows like sales reporting and web scraping. I am constantly refining my coding practices, ensuring that the applications I build are robust, maintainable, and up to modern industry standards.",
     paragraph2: "When I'm not debugging or architecting systems, you can find me immersing myself in video games, exploring new movies, or curating music playlists. I believe that maintaining a creative balance outside of coding keeps my problem-solving skills sharp.",
   },
   techStack: [
@@ -57,10 +57,10 @@ export const personalInfo = {
       duration: "Jan 2025 - Dec 2025",
       techStack: [
         "React Native",
+        "React",
+        "Vite",
         "Express.js",
-        "Neon",
-        "Socket.io",
-        "Redux",
+        "PostgreSQL",
       ],
       shortDescription: "Led the development of Auto AIDER, a mobile vehicle diagnostic system designed to interpret OBD-II trouble codes for non-technical users and allow them to find a nearby repair shops registered in the app.",
     }
