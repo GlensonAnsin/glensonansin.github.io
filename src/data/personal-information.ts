@@ -10,7 +10,7 @@ export const personalInfo = {
   university: "University of Science and Technology of Southern Philippines",
   location: "Cagayan de Oro, Philippines",
   about: {
-    paragraph1: "I am Software Developer from the Philippines specializing in building scalable web and mobile applications. For me, coding is more than just writing code, it's about turning abstract ideas into tangible, user-friendly realities. I also do automation with Python to streamline complex workflows like sales reporting and web scraping. I am constantly refining my coding practices, ensuring that the applications I build are robust, maintainable, and up to modern industry standards.",
+    paragraph1: "I am Software Developer specializing in building scalable web and mobile applications. For me, coding is more than just writing code, it's about turning abstract ideas into tangible, user-friendly realities. I also do automation with Python to streamline complex workflows like sales reporting and web scraping. I am constantly refining my coding practices, ensuring that the applications I build are robust, maintainable, and up to modern industry standards.",
     paragraph2: "When I'm not debugging or architecting systems, you can find me immersing myself in video games, exploring new movies, or curating music playlists. I believe that maintaining a creative balance outside of coding keeps my problem-solving skills sharp.",
   },
   techStack: [
