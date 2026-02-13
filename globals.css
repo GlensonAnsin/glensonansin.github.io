@@ -39,8 +39,6 @@
   }
 }
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 /* Disable default cross-fade for the view transition */
 ::view-transition-old(root),
 ::view-transition-new(root) {

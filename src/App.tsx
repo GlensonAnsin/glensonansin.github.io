@@ -32,7 +32,7 @@ function App() {
 
       <section className="h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-indigo-950/30">
         <div className="mx-[5%]">
-          <h1 className="text-5xl relative z-20 md:text-5xl lg:text-8xl font-bold text-center text-black dark:text-white tracking-tight">
+          <h1 className="text-5xl relative z-20 md:text-5xl lg:text-8xl font-bold text-center text-white tracking-tight">
             <AnimatedGradientText>Glenson Ansin</AnimatedGradientText>
           </h1>
           <h2 className="text-3xl relative z-20 md:text-3xl lg:text-6xl text-center">
@@ -79,7 +79,7 @@ function App() {
           <div className="mt-10 flex flex-col xl:flex-row items-center justify-center xl:gap-20">
             <CometCard>
               <div
-                className="bg-gray-50 w-60 mb-10 xl:mb-0 dark:bg-indigo-950 rounded-[16px] p-4 border-1 border-indigo-500/50"
+                className="w-60 mb-10 xl:mb-0 bg-indigo-950 rounded-[16px] p-4 border-1 border-indigo-500/50"
                 style={{
                   transformStyle: 'preserve-3d',
                   transform: 'none',
@@ -105,14 +105,12 @@ function App() {
               </div>
             </CometCard>
 
-            <CardSpotlight className="self-center bg-gray-50 dark:bg-indigo-950 border-1 border-indigo-500/50">
-              <p className="text-neutral-600 dark:text-slate-100 text-lg md:text-xl lg:text-3xl font-bold mb-10 relative z-20">
+            <CardSpotlight className="self-center bg-indigo-950 border-1 border-indigo-500/50">
+              <p className="text-slate-100 text-lg md:text-xl lg:text-3xl font-bold mb-10 relative z-20">
                 {personalInfo.name}
               </p>
-              <p className="text-slate-500 dark:text-neutral-300 relative z-20 mb-10">
-                {personalInfo.about.paragraph1}
-              </p>
-              <p className="text-slate-500 dark:text-neutral-300 relative z-20">{personalInfo.about.paragraph2}</p>
+              <p className="text-neutral-300 relative z-20 mb-10">{personalInfo.about.paragraph1}</p>
+              <p className="text-neutral-300 relative z-20">{personalInfo.about.paragraph2}</p>
             </CardSpotlight>
           </div>
         </div>
@@ -125,7 +123,7 @@ function App() {
           </h3>
           <div className="mt-10 flex flex-col lg:flex-row lg:item-center lg:justify-center lg:gap-20">
             <CardContainer className="inter-var h-full shadow-xl">
-              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-indigo-950 border-1 border-indigo-500/50 w-fit md:w-[50%] lg:w-fit h-full rounded-xl p-6 border md:grid md:grid-cols-2 md:gap-5">
+              <CardBody className="relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-indigo-950 border-1 border-indigo-500/50 w-fit md:w-[50%] lg:w-fit h-full rounded-xl p-6 border md:grid md:grid-cols-2 md:gap-5">
                 <CardItem translateZ="100">
                   <img
                     src={cocLogo}
@@ -136,13 +134,13 @@ function App() {
                   />
                 </CardItem>
                 <div className="mt-5 md:mt-0">
-                  <CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-slate-100">
+                  <CardItem translateZ="50" className="text-xl font-bold text-slate-100">
                     PHINMA - Cagayan de Oro College
                   </CardItem>
-                  <CardItem as="p" translateZ="60" className="text-slate-500 max-w-sm mt-2 dark:text-neutral-300">
+                  <CardItem as="p" translateZ="60" className="max-w-sm mt-2 text-neutral-300">
                     Humanities and Social Sciences
                   </CardItem>
-                  <CardItem as="p" translateZ="60" className="text-slate-500 max-w-sm mt-2 dark:text-neutral-300">
+                  <CardItem as="p" translateZ="60" className="max-w-sm mt-2 text-neutral-300">
                     2020 - 2022
                   </CardItem>
                 </div>
@@ -150,7 +148,7 @@ function App() {
             </CardContainer>
 
             <CardContainer className="inter-var h-full shadow-xl">
-              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-indigo-950 border-1 border-indigo-500/50 w-fit md:w-[50%] lg:w-fit h-full rounded-xl p-6 border md:grid md:grid-cols-2 md:gap-5">
+              <CardBody className="relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-indigo-950 border-1 border-indigo-500/50 w-fit md:w-[50%] lg:w-fit h-full rounded-xl p-6 border md:grid md:grid-cols-2 md:gap-5">
                 <CardItem translateZ="100">
                   <img
                     src={ustpLogo}
@@ -161,13 +159,13 @@ function App() {
                   />
                 </CardItem>
                 <div className="mt-5 md:mt-0">
-                  <CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-slate-100">
+                  <CardItem translateZ="50" className="text-xl font-bold text-slate-100">
                     University of Science and Technology of Southern Philippines
                   </CardItem>
-                  <CardItem as="p" translateZ="60" className="text-slate-500 max-w-sm mt-2 dark:text-neutral-300">
+                  <CardItem as="p" translateZ="60" className="max-w-sm mt-2 text-neutral-300">
                     Bachelor of Science in Information Technology
                   </CardItem>
-                  <CardItem as="p" translateZ="60" className="text-slate-500 max-w-sm mt-2 dark:text-neutral-300">
+                  <CardItem as="p" translateZ="60" className="max-w-sm mt-2 text-neutral-300">
                     2022 - 2026
                   </CardItem>
                 </div>
@@ -197,13 +195,13 @@ function App() {
           </h3>
           <div className="mt-10">
             {personalInfo.experience.map((exp) => (
-              <div className="w-fit xl:w-200 place-self-center bg-gray-50 relative group/card shadow-xl dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-indigo-950 border-1 border-indigo-500/50 rounded-xl p-6 border">
-                <p className="text-neutral-600 dark:text-slate-100 text-2xl font-bold mb-5">{exp.duration}</p>
-                <p className="text-lg text-slate-500 dark:text-neutral-300">{exp.appName}</p>
-                <p className="text-lg text-slate-500 dark:text-neutral-300">{exp.company}</p>
-                <p className="text-lg text-slate-500 dark:text-neutral-300">{exp.role}</p>
-                <p className="text-lg text-slate-500 dark:text-neutral-300">{exp.techStack.join(', ')}</p>
-                <p className="text-slate-500 dark:text-neutral-300 mt-5">{exp.shortDescription}</p>
+              <div className="w-fit xl:w-200 place-self-center relative group/card shadow-xl hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-indigo-950 border-1 border-indigo-500/50 rounded-xl p-6 border">
+                <p className="text-slate-100 text-2xl font-bold mb-5">{exp.duration}</p>
+                <p className="text-lg text-neutral-300">{exp.appName}</p>
+                <p className="text-lg text-neutral-300">{exp.company}</p>
+                <p className="text-lg text-neutral-300">{exp.role}</p>
+                <p className="text-lg text-neutral-300">{exp.techStack.join(', ')}</p>
+                <p className="text-neutral-300 mt-5">{exp.shortDescription}</p>
               </div>
             ))}
           </div>
@@ -219,11 +217,9 @@ function App() {
             {personalInfo.projects.map((p) => (
               <PinContainer title={p.link} href={p.link} key={p.projectName}>
                 <div className="flex flex-col p-4 tracking-tight text-slate-100/50 w-[80vw] max-w-[20rem] h-[20rem]">
-                  <h3 className="max-w-xs !pb-2 !m-0 font-bold text-xl text-neutral-600 dark:text-slate-100">
-                    {p.projectName}
-                  </h3>
+                  <h3 className="max-w-xs !pb-2 !m-0 font-bold text-xl text-slate-100">{p.projectName}</h3>
                   <div className="text-base !m-0 !p-0 font-normal">
-                    <span className="text-slate-500 dark:text-neutral-300 line-clamp-2">{p.description}</span>
+                    <span className="text-neutral-300 line-clamp-2">{p.description}</span>
                   </div>
                   <div className="relative flex-1 mt-4 overflow-hidden rounded-lg">
                     <img
@@ -248,12 +244,12 @@ function App() {
           </h3>
           <div className="mt-10 flex flex-col place-self-center gap-10 lg:flex-row lg:items-center lg:justify-center lg:gap-20">
             <div className="flex gap-5">
-              <Mail size={50} className="text-neutral-600 dark:text-slate-100" />
+              <Mail size={50} className="text-slate-100" />
               <div>
-                <p className="text-xl font-bold text-neutral-600 dark:text-slate-100">Email</p>
+                <p className="text-xl font-bold text-slate-100">Email</p>
                 <LinkPreview
                   url="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox"
-                  className="text-slate-500 max-w-sm mt-2 dark:text-neutral-300"
+                  className="max-w-sm mt-2 text-neutral-300"
                 >
                   ansin.glenson01@gmail.com
                 </LinkPreview>
@@ -261,12 +257,12 @@ function App() {
             </div>
 
             <div className="flex gap-5">
-              <Linkedin size={50} className="text-neutral-600 dark:text-slate-100" />
+              <Linkedin size={50} className="text-slate-100" />
               <div>
-                <p className="text-xl font-bold text-neutral-600 dark:text-slate-100">LinkedIn</p>
+                <p className="text-xl font-bold text-slate-100">LinkedIn</p>
                 <LinkPreview
                   url="https://linkedin.com/in/glenson-ansin-8862752b3/"
-                  className="text-slate-500 max-w-sm mt-2 dark:text-neutral-300"
+                  className="max-w-sm mt-2 text-neutral-300"
                 >
                   Glenson Ansin
                 </LinkPreview>
@@ -274,13 +270,10 @@ function App() {
             </div>
 
             <div className="flex gap-5">
-              <Facebook size={50} className="text-neutral-600 dark:text-slate-100" />
+              <Facebook size={50} className="text-slate-100" />
               <div>
-                <p className="text-xl font-bold text-neutral-600 dark:text-slate-100">Facebook</p>
-                <LinkPreview
-                  url="https://www.facebook.com/glenson.ansin"
-                  className="text-slate-500 max-w-sm mt-2 dark:text-neutral-300"
-                >
+                <p className="text-xl font-bold text-slate-100">Facebook</p>
+                <LinkPreview url="https://www.facebook.com/glenson.ansin" className="max-w-sm mt-2 text-neutral-300">
                   Glenson Ansin
                 </LinkPreview>
               </div>
