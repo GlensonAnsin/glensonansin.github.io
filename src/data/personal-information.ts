@@ -13,58 +13,128 @@ export const personalInfo = {
     paragraph1: "I am Software Developer specializing in building scalable web and mobile applications. For me, coding is more than just writing code, it's about turning abstract ideas into tangible, user-friendly realities. I also do automation with Python to streamline complex workflows like sales reporting and web scraping. I am constantly refining my coding practices, ensuring that the applications I build are robust, maintainable, and up to modern industry standards.",
     paragraph2: "When I'm not debugging or architecting systems, you can find me immersing myself in video games, exploring new movies, or curating music playlists. I believe that maintaining a creative balance outside of coding keeps my problem-solving skills sharp.",
   },
-  techStack: [
-    "react",
-    "reactrouter",
-    "express",
-    "html5",
-    "css",
-    "tailwindcss",
-    "javascript",
-    "typescript",
-    "cplusplus",
-    "vite",
-    "python",
-    "php",
-    "socketdotio",
-    "expo",
-    "figma",
-    "git",
-    "nextdotjs",
-    "nodedotjs",
-    "postgresql",
-    "mysql",
-    "mongodb",
-    "vercel",
-    "render",
-    "jsonwebtokens",
-    "github",
-    "eslint",
-    "firebase",
-    "daisyui",
-    "postman",
-    "redux",
-    "prettier",
-    "nodemon",
-    "bootstrap",
-    "googlecloud",
-  ],
-  experience: [
-    {
-      role: "Full-Stack Developer",
-      appName: "Auto AIDER (Capstone Project)",
-      company: "University of Science and Technology of Southern Philippines",
-      duration: "Jan 2025 - Dec 2025",
-      techStack: [
-        "React Native",
-        "React",
-        "Vite",
-        "Express.js",
-        "PostgreSQL",
-      ],
-      shortDescription: "Led the development of Auto AIDER, a mobile vehicle diagnostic system designed to interpret OBD-II trouble codes for non-technical users and allow them to find a nearby repair shops registered in the app.",
-    }
-  ],
+  technicalSkills: {
+    languages: [
+      {
+        name: "Javascript",
+        icon: "javascript",
+      },
+      {
+        name: "Typescript",
+        icon: "typescript",
+      },
+      {
+        name: "Python",
+        icon: "python",
+      },
+      {
+        name: "PHP",
+        icon: "php",
+      },
+      {
+        name: "C++",
+        icon: "cplusplus",
+      },
+      {
+        name: "Java",
+        icon: "java",
+      },
+    ],
+    frontend: [
+      {
+        name: "React",
+        icon: "react",
+      },
+      {
+        name: "Next.js",
+        icon: "nextjs",
+      },
+      {
+        name: "Vite",
+        icon: "vitejs",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "tailwindcss",
+      },
+      {
+        name: "HTML5",
+        icon: "html5",
+      },
+      {
+        name: "CSS",
+        icon: "css3",
+      },
+    ],
+    backend: [
+      {
+        name: "Node.js",
+        icon: "nodejs",
+      },
+      {
+        name: "Express.js",
+        icon: "express",
+      },
+      {
+        name: "Laravel",
+        icon: "laravel",
+      },
+    ],
+    mobile: [
+      {
+        name: "React Native",
+        icon: "react",
+      },
+    ],
+    database: [
+      {
+        name: "PostgreSQL",
+        icon: "postgresql",
+      },
+      {
+        name: "MySQL",
+        icon: "mysql",
+      },
+      {
+        name: "MongoDB",
+        icon: "mongodb",
+      },
+      {
+        name: "SQLite",
+        icon: "sqlite",
+      },
+    ],
+    tools: [
+      {
+        name: "Git",
+        icon: "git",
+      },
+      {
+        name: "Figma",
+        icon: "figma",
+      },
+      {
+        name: "Postman",
+        icon: "postman",
+      },
+      {
+        name: "Github Actions",
+        icon: "githubactions",
+      },
+      {
+        name: "Docker",
+        icon: "docker",
+      },
+      {
+        name: "Google Cloud Platform",
+        icon: "googlecloud",
+      },
+      {
+        name: "Firebase",
+        icon: "firebase",
+      },
+    ],
+  },
   projects: [
     {
       projectName: "Ghostly Gamers",
