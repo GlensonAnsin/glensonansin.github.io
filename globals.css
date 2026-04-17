@@ -57,17 +57,34 @@ html {
 
 * {
   font-family: "Inter", sans-serif;
-  cursor: none !important;
 }
 
-input,
-textarea,
-select {
-  cursor: text !important;
-}
-
-@media (hover: none) and (pointer: coarse) {
-  #custom-cursor {
-    display: none !important;
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
   }
+
+  input,
+  textarea,
+  select {
+    cursor: text !important;
+  }
+}
+
+/* Chat scrollbar */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.2);
+  border-radius: 2px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.4);
 }

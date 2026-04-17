@@ -1,17 +1,19 @@
-import formalPic from '../assets/images/formal-pic.jpg';
-import ghostlyGamersImg from '../assets/images/ghostly-gamers.png';
-import autoAiderImg from '../assets/images/auto-aider.png';
-import ustpGPACalculatorImg from '../assets/images/ustp-gpa-calculator.png';
-import luminaImg from '../assets/images/lumina.png';
+import formalPic from "../assets/images/formal-pic.jpg";
+import ghostlyGamersImg from "../assets/images/ghostly-gamers.png";
+import autoAiderImg from "../assets/images/auto-aider.png";
+import ustpGPACalculatorImg from "../assets/images/ustp-gpa-calculator.png";
+import luminaImg from "../assets/images/lumina.png";
 
 export const personalInfo = {
   name: "Glenson Montellano Ansin",
-  photo: {formalPic},
+  photo: { formalPic },
   university: "University of Science and Technology of Southern Philippines",
   location: "Cagayan de Oro, Philippines",
   about: {
-    paragraph1: "I am Software Developer specializing in building scalable web and mobile applications. For me, coding is more than just writing code, it's about turning abstract ideas into tangible, user-friendly realities. I also do automation with Python to streamline complex workflows like sales reporting and web scraping. I am constantly refining my coding practices, ensuring that the applications I build are robust, maintainable, and up to modern industry standards.",
-    paragraph2: "When I'm not debugging or architecting systems, you can find me immersing myself in video games, exploring new movies, or curating music playlists. I believe that maintaining a creative balance outside of coding keeps my problem-solving skills sharp.",
+    paragraph1:
+      "I am a Full-Stack Developer specializing in building scalable web and mobile applications. For me, coding is more than just writing code, it's about turning abstract ideas into tangible, user-friendly realities. I also do automation with Python to streamline complex workflows like sales reporting and web scraping. I am constantly refining my coding practices, ensuring that the applications I build are robust, maintainable, and up to modern industry standards.",
+    paragraph2:
+      "When I'm not debugging or architecting systems, you can find me immersing myself in video games, exploring new movies, or curating music playlists. I believe that maintaining a creative balance outside of coding keeps my problem-solving skills sharp.",
   },
   technicalSkills: {
     languages: [
@@ -56,6 +58,14 @@ export const personalInfo = {
       {
         name: "Tailwind CSS",
         icon: "tailwindcss",
+      },
+      {
+        name: "Electron",
+        icon: "electron",
+      },
+      {
+        name: "Bootstrap",
+        icon: "bootstrap",
       },
       {
         name: "HTML5",
@@ -140,25 +150,28 @@ export const personalInfo = {
       projectName: "Ghostly Gamers",
       description: "A website to find games to play in various platforms.",
       link: "https://ghostlygamers.vercel.app/",
-      img: {ghostlyGamersImg},
+      img: { ghostlyGamersImg },
     },
     {
       projectName: "Auto AIDER",
-      description: "A smart car diagnostic app using OBD-II with auto repair shop locator.",
+      description:
+        "A smart car diagnostic app using OBD-II with auto repair shop locator.",
       link: "https://github.com/GlensonAnsin/auto-aider-app/releases/tag/v1.0.0-beta.1",
-      img: {autoAiderImg},
+      img: { autoAiderImg },
     },
     {
       projectName: "USTP GPA Calculator",
-      description: "A website to calculate the GPA of the students of the USTP.",
+      description:
+        "A website to calculate the GPA of the students of the USTP.",
       link: "https://ustpgpacalculator.vercel.app/",
-      img: {ustpGPACalculatorImg},
+      img: { ustpGPACalculatorImg },
     },
     {
       projectName: "Lumina",
-      description: "A production-grade Express.js starter kit crafted with TypeScript.",
+      description:
+        "A production-grade Express.js starter kit crafted with TypeScript.",
       link: "https://github.com/GlensonAnsin/lumina",
-      img: {luminaImg},
-    }
+      img: { luminaImg },
+    },
   ],
-}
+};
