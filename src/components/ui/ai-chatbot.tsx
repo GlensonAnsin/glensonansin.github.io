@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, type FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Send, Bot, Sparkles } from "lucide-react";
+import axios from "axios";
 
 interface Message {
   id: string;
@@ -52,18 +53,19 @@ export function AIChatbot() {
     const assistantId = crypto.randomUUID();
 
     try {
-      const response = await fetch(`${API_URL}/api/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const response = await axios.post(
+        `${API_URL}/api/chat`,
+        {
           message: messageText,
           history: messages.map(({ role, content }) => ({ role, content })),
-        }),
-      });
+        },
+        {
+          responseType: "stream",
+          adapter: "fetch",
+        }
+      );
 
-      if (!response.ok) throw new Error("API error");
-
-      const reader = response.body?.getReader();
+      const reader = (response.data as ReadableStream<Uint8Array>)?.getReader();
       const decoder = new TextDecoder();
 
       setMessages((prev) => [
