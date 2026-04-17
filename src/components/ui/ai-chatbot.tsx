@@ -121,10 +121,10 @@ export function AIChatbot() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-[9000] w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-[0_0_30px_rgba(99,102,241,0.4)] flex items-center justify-center hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] transition-shadow duration-300"
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9000] w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-[0_0_30px_rgba(99,102,241,0.4)] flex items-center justify-center hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] transition-shadow duration-300"
             aria-label="Open AI chat assistant"
           >
-            <Sparkles size={24} />
+            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
             <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-green-400 border-2 border-neutral-950 animate-pulse" />
           </motion.button>
         )}
@@ -138,7 +138,7 @@ export function AIChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-6 right-6 z-[9000] w-[calc(100vw-3rem)] sm:w-[400px] h-[min(600px,calc(100vh-6rem))] rounded-2xl overflow-hidden flex flex-col border border-indigo-500/30 bg-neutral-950/90 backdrop-blur-xl shadow-[0_0_60px_rgba(99,102,241,0.15)]"
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9000] w-[calc(100vw-2rem)] sm:w-[400px] h-[min(600px,calc(100dvh-5rem))] sm:h-[min(600px,calc(100vh-6rem))] rounded-2xl overflow-hidden flex flex-col border border-indigo-500/30 bg-neutral-950/90 backdrop-blur-xl shadow-[0_0_60px_rgba(99,102,241,0.15)]"
           >
             {/* Header */}
             <div className="relative flex items-center justify-between px-5 py-4 border-b border-indigo-500/20 shrink-0">
@@ -266,7 +266,7 @@ export function AIChatbot() {
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask me anything..."
                   disabled={isStreaming}
-                  className="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-indigo-500/20 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400/50 focus:bg-white/10 transition-all duration-200 disabled:opacity-50"
+                  className="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-indigo-500/20 text-base sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400/50 focus:bg-white/10 transition-all duration-200 disabled:opacity-50"
                 />
                 <button
                   type="submit"
@@ -284,3 +284,4 @@ export function AIChatbot() {
     </>
   );
 }
+
