@@ -13,10 +13,9 @@ import { Particles } from './components/ui/particles';
 import { SmoothCursor } from './components/ui/smooth-cursor';
 import { EncryptedText } from './components/ui/encrypted-text';
 import { ScrollReveal } from './components/ui/scroll-reveal';
+import { AIChatbot } from './components/ui/ai-chatbot';
 
 function App() {
-
-
   const getIconUrl = (icon: string) =>
     `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${icon}/${icon}-original.svg`;
 
@@ -120,6 +119,7 @@ function App() {
 
       <Particles className="fixed inset-0 z-0 pointer-events-none" quantity={100} ease={80} color="#ffffff" refresh />
       <SmoothCursor />
+      <AIChatbot />
 
       <section className="h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-indigo-950/30">
         <div className="mx-[5%] flex flex-col items-center">
@@ -134,7 +134,7 @@ function App() {
           </h1>
           <h2 className="mt-3 text-xl relative z-20 sm:text-2xl md:text-3xl lg:text-5xl text-center">
             <EncryptedText
-              text="Software Developer"
+              text="Full-Stack Developer"
               encryptedClassName="text-neutral-500"
               revealedClassName="text-slate-100"
               revealDelayMs={50}
@@ -168,14 +168,14 @@ function App() {
 
       <section id="about" className="bg-indigo-950/60 pb-15">
         <div className="mx-[5%] md:mx-[8%] lg:mx-[10%] xl:mx-[15%]">
-          <ScrollReveal>
+          <ScrollReveal delay={0.3}>
             <h3 className="text-3xl sm:text-5xl font-bold tracking-tighter text-center pt-10">
               <AuroraText>About Me</AuroraText>
             </h3>
             <p className="mt-4 text-center text-slate-400 max-w-lg mx-auto">Get to know the person behind the code.</p>
           </ScrollReveal>
           <div className="mt-12 flex flex-col xl:flex-row items-center justify-center xl:gap-16">
-            <ScrollReveal direction="right" delay={0.2}>
+            <ScrollReveal delay={0.3}>
               <CometCard>
                 <div className="w-64 mb-10 xl:mb-0 rounded-2xl overflow-hidden border border-indigo-500/30 bg-indigo-950/80 shadow-[0_0_40px_rgba(99,102,241,0.1)]">
                   <div className="p-3">
@@ -192,13 +192,13 @@ function App() {
                   </div>
                   <div className="px-4 pb-4 pt-1 text-center">
                     <p className="text-slate-100 font-semibold text-sm">{personalInfo.name}</p>
-                    <p className="text-indigo-300 text-xs mt-0.5">Software Developer</p>
+                    <p className="text-indigo-300 text-xs mt-0.5">Full-Stack Developer</p>
                   </div>
                 </div>
               </CometCard>
             </ScrollReveal>
 
-            <ScrollReveal direction="left" delay={0.3}>
+            <ScrollReveal delay={0.3}>
               <CardSpotlight className="self-center bg-indigo-950/80 border border-indigo-500/20 max-w-2xl">
                 <h4 className="text-slate-100 text-xl md:text-2xl lg:text-3xl font-bold mb-4 relative z-20">
                   Who I Am
@@ -224,7 +224,7 @@ function App() {
 
       <section id="tech-stack" className="bg-indigo-950/30 pb-15">
         <div className="mx-[5%] md:mx-[8%] lg:mx-[10%] xl:mx-[15%]">
-          <ScrollReveal>
+          <ScrollReveal delay={0.3}>
             <h3 className="text-3xl sm:text-5xl font-bold tracking-tighter text-center pt-10">
               <AuroraText>Technical Skills</AuroraText>
             </h3>
@@ -232,7 +232,7 @@ function App() {
               The technologies and tools I work with to bring ideas to life.
             </p>
           </ScrollReveal>
-          <ScrollReveal delay={0.2}>
+          <ScrollReveal delay={0.3}>
             <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 { title: 'Programming Languages', items: languagesIcons },
@@ -255,7 +255,7 @@ function App() {
                       >
                         <img
                           src={icon}
-                          alt={name}
+                          alt=""
                           className="w-7 h-7 group-hover:scale-110 transition-transform duration-300"
                         />
                         <span className="text-sm text-slate-300 group-hover:text-white transition-colors duration-300">
@@ -273,15 +273,15 @@ function App() {
 
       <section id="projects" className="bg-indigo-950/60 pb-20">
         <div className="mx-[5%] md:mx-[8%] lg:mx-[10%] xl:mx-[15%]">
-          <ScrollReveal>
+          <ScrollReveal delay={0.3}>
             <h3 className="text-3xl sm:text-5xl font-bold tracking-tighter text-center pt-10">
               <AuroraText>Projects</AuroraText>
             </h3>
             <p className="mt-4 text-center text-slate-400 max-w-lg mx-auto">
-              A collection of projects that showcase my skills and passion for building impactful software.
+              A collection of projects that showcase my skills and passion for building systems and applications.
             </p>
           </ScrollReveal>
-          <ScrollReveal delay={0.2}>
+          <ScrollReveal delay={0.3}>
             <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 w-fit place-self-center">
               {personalInfo.projects.map((p) => (
                 <PinContainer title={p.link} href={p.link} key={p.projectName}>
@@ -312,7 +312,7 @@ function App() {
 
       <section id="contact" className="bg-indigo-950/30 pb-20">
         <div className="mx-[5%] md:mx-[8%] lg:mx-[10%] xl:mx-[15%]">
-          <ScrollReveal>
+          <ScrollReveal delay={0.3}>
             <h3 className="text-3xl sm:text-5xl font-bold tracking-tighter text-center pt-10">
               <AuroraText>Contact Me</AuroraText>
             </h3>
@@ -320,7 +320,7 @@ function App() {
               Have a project in mind or just want to connect? Feel free to reach out through any of these platforms.
             </p>
           </ScrollReveal>
-          <ScrollReveal delay={0.2}>
+          <ScrollReveal delay={0.3}>
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="group rounded-2xl border border-indigo-500/20 bg-indigo-950/40 backdrop-blur-sm p-6 hover:border-indigo-400/40 hover:shadow-[0_0_30px_rgba(99,102,241,0.1)] transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-indigo-500/15 flex items-center justify-center mb-4 group-hover:bg-indigo-500/25 transition-colors duration-300">

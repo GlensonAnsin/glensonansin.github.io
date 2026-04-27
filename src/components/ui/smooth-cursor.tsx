@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { motion, useSpring } from 'motion/react';
+import { useEffect, useState } from "react";
+import { motion, useSpring } from "motion/react";
 
 export function SmoothCursor() {
   const springConfig = { damping: 30, stiffness: 400, mass: 0.5 };
@@ -11,7 +11,23 @@ export function SmoothCursor() {
   const ringY = useSpring(0, trailConfig);
   const ringScale = useSpring(1, { damping: 25, stiffness: 300 });
 
+  const [isDesktop, setIsDesktop] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    }
+    return true;
+  });
+
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
     const onMouseMove = (e: MouseEvent) => {
       dotX.set(e.clientX);
       dotY.set(e.clientY);
@@ -25,7 +41,9 @@ export function SmoothCursor() {
     const onMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (
-        target.closest('a, button, [role="button"], input, textarea, select, [data-cursor-hover]')
+        target.closest(
+          'a, button, [role="button"], input, textarea, select, [data-cursor-hover]',
+        )
       ) {
         ringScale.set(1.6);
       }
@@ -34,67 +52,72 @@ export function SmoothCursor() {
     const onMouseOut = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (
-        target.closest('a, button, [role="button"], input, textarea, select, [data-cursor-hover]')
+        target.closest(
+          'a, button, [role="button"], input, textarea, select, [data-cursor-hover]',
+        )
       ) {
         ringScale.set(1);
       }
     };
 
-    document.body.style.cursor = 'none';
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mousedown', onMouseDown);
-    window.addEventListener('mouseup', onMouseUp);
-    window.addEventListener('mouseover', onMouseOver);
-    window.addEventListener('mouseout', onMouseOut);
+    document.body.style.cursor = "none";
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("mouseup", onMouseUp);
+    window.addEventListener("mouseover", onMouseOver);
+    window.addEventListener("mouseout", onMouseOut);
 
     return () => {
-      document.body.style.cursor = 'auto';
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mousedown', onMouseDown);
-      window.removeEventListener('mouseup', onMouseUp);
-      window.removeEventListener('mouseover', onMouseOver);
-      window.removeEventListener('mouseout', onMouseOut);
+      document.body.style.cursor = "auto";
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mouseup", onMouseUp);
+      window.removeEventListener("mouseover", onMouseOver);
+      window.removeEventListener("mouseout", onMouseOut);
     };
-  }, [dotX, dotY, ringX, ringY, ringScale]);
+  }, [dotX, dotY, ringX, ringY, ringScale, isDesktop]);
+
+  if (!isDesktop) return null;
 
   return (
     <>
       {/* Inner dot */}
       <motion.div
         style={{
-          position: 'fixed',
+          position: "fixed",
           left: dotX,
           top: dotY,
-          translateX: '-50%',
-          translateY: '-50%',
+          translateX: "-50%",
+          translateY: "-50%",
           zIndex: 9999,
-          pointerEvents: 'none',
+          pointerEvents: "none",
           width: 8,
           height: 8,
-          borderRadius: '50%',
-          backgroundColor: '#818cf8',
-          boxShadow: '0 0 12px 2px rgba(129, 140, 248, 0.6), 0 0 30px 6px rgba(99, 102, 241, 0.3)',
+          borderRadius: "50%",
+          backgroundColor: "#818cf8",
+          boxShadow:
+            "0 0 12px 2px rgba(129, 140, 248, 0.6), 0 0 30px 6px rgba(99, 102, 241, 0.3)",
         }}
       />
 
       {/* Trailing ring */}
       <motion.div
         style={{
-          position: 'fixed',
+          position: "fixed",
           left: ringX,
           top: ringY,
-          translateX: '-50%',
-          translateY: '-50%',
+          translateX: "-50%",
+          translateY: "-50%",
           scale: ringScale,
           zIndex: 9998,
-          pointerEvents: 'none',
+          pointerEvents: "none",
           width: 36,
           height: 36,
-          borderRadius: '50%',
-          border: '1.5px solid rgba(129, 140, 248, 0.4)',
-          backgroundColor: 'rgba(99, 102, 241, 0.05)',
-          willChange: 'transform',
-          transition: 'border-color 0.3s, background-color 0.3s',
+          borderRadius: "50%",
+          border: "1.5px solid rgba(129, 140, 248, 0.4)",
+          backgroundColor: "rgba(99, 102, 241, 0.05)",
+          willChange: "transform",
+          transition: "border-color 0.3s, background-color 0.3s",
         }}
       />
     </>
