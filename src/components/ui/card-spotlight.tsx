@@ -35,7 +35,7 @@ export const CardSpotlight = ({
       {...props}
     >
       <motion.div
-        className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100 bg-indigo-950"
+        className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100 bg-bg-inset"
         style={{
           maskImage: useMotionTemplate`
             radial-gradient(
@@ -51,8 +51,8 @@ export const CardSpotlight = ({
             animationSpeed={5}
             containerClassName="bg-transparent absolute inset-0 pointer-events-none"
             colors={[
-              [59, 130, 246],
-              [139, 92, 246],
+              [92, 179, 255],
+              [195, 156, 255],
             ]}
             dotSize={3}
           />
