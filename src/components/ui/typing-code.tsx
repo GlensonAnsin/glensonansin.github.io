@@ -38,80 +38,70 @@ function sliceTokens(tokens: CodeToken[], count: number): CodeToken[] {
   return result;
 }
 
+function lineLength(line: CodeLine): number {
+  return line.reduce((sum, t) => sum + t.text.length, 0);
+}
+
 export function TypingCode({ lines, speed = 18, startDelay = 300, lineDelay = 120, className, onDone }: TypingCodeProps) {
   const prefersReducedMotion = useMemo(
     () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     []
   );
 
-  const [lineIndex, setLineIndex] = useState(prefersReducedMotion ? lines.length : 0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [done, setDone] = useState(prefersReducedMotion);
+  // cumulative[i] = total characters typed by the start of line i; cumulative[lines.length] = total length.
+  const cumulative = useMemo(() => {
+    const result = [0];
+    for (const line of lines) {
+      result.push(result[result.length - 1] + lineLength(line));
+    }
+    return result;
+  }, [lines]);
+
+  const totalLength = cumulative[cumulative.length - 1];
+
+  const [typedCount, setTypedCount] = useState(prefersReducedMotion ? totalLength : 0);
   const doneCalled = useRef(false);
 
+  // Single linear timer chain — driven entirely by a local counter, not by
+  // reading state back inside nested setState updaters (which stalls once
+  // the per-line typing loop stops self-scheduling at a line boundary).
   useEffect(() => {
-    if (prefersReducedMotion) {
-      if (!doneCalled.current) {
-        doneCalled.current = true;
-        onDone?.();
-      }
-      return;
-    }
+    if (prefersReducedMotion || totalLength === 0) return;
 
+    let count = 0;
     let timeoutId: ReturnType<typeof setTimeout>;
 
-    const tick = () => {
-      setLineIndex((currentLine) => {
-        if (currentLine >= lines.length) return currentLine;
-        const lineLength = lines[currentLine].reduce((sum, t) => sum + t.text.length, 0);
+    const step = () => {
+      count += 1;
+      setTypedCount(count);
+      if (count >= totalLength) return;
 
-        setCharIndex((currentChar) => {
-          if (currentChar >= lineLength) return currentChar;
-          timeoutId = setTimeout(tick, speed);
-          return currentChar + 1;
-        });
-
-        return currentLine;
-      });
+      const justFinishedLine = cumulative.includes(count);
+      timeoutId = setTimeout(step, justFinishedLine ? speed + lineDelay : speed);
     };
 
-    const start = setTimeout(tick, startDelay);
-    return () => {
-      clearTimeout(start);
-      clearTimeout(timeoutId);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    timeoutId = setTimeout(step, startDelay);
+    return () => clearTimeout(timeoutId);
+  }, [cumulative, totalLength, speed, startDelay, lineDelay, prefersReducedMotion]);
 
   useEffect(() => {
-    if (prefersReducedMotion || lineIndex >= lines.length) return;
-    const lineLength = lines[lineIndex].reduce((sum, t) => sum + t.text.length, 0);
-    if (charIndex < lineLength) return;
-
-    const advance = setTimeout(() => {
-      setLineIndex((i) => i + 1);
-      setCharIndex(0);
-    }, lineDelay);
-    return () => clearTimeout(advance);
-  }, [charIndex, lineIndex, lineDelay, lines, prefersReducedMotion]);
-
-  useEffect(() => {
-    if (lineIndex >= lines.length && !doneCalled.current) {
+    if (typedCount >= totalLength && !doneCalled.current) {
       doneCalled.current = true;
-      setDone(true);
       onDone?.();
     }
-  }, [lineIndex, lines.length, onDone]);
+  }, [typedCount, totalLength, onDone]);
 
   return (
     <div className={cn('font-mono text-sm sm:text-[15px] leading-relaxed', className)}>
       {lines.map((line, i) => {
-        const isPast = i < lineIndex || prefersReducedMotion;
-        const isCurrent = i === lineIndex && !prefersReducedMotion;
-        if (!isPast && !isCurrent) return null;
+        const start = cumulative[i];
+        const end = cumulative[i + 1];
+        if (typedCount <= start && !prefersReducedMotion) return null;
 
-        const visibleTokens = isPast ? line : sliceTokens(line, charIndex);
-        const showCursor = isCurrent || (done && i === lines.length - 1);
+        const isFullyTyped = prefersReducedMotion || typedCount >= end;
+        const visibleTokens = isFullyTyped ? line : sliceTokens(line, typedCount - start);
+        const isCurrentLine = !prefersReducedMotion && typedCount >= start && typedCount < end;
+        const showCursor = isCurrentLine || (typedCount >= totalLength && i === lines.length - 1);
 
         return (
           <div key={i} className="flex gap-4">
