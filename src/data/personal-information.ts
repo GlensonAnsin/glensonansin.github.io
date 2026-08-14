@@ -1,4 +1,5 @@
 import ghostAvatar from "../assets/images/ghost-avatar.png";
+import formalPic from "../assets/images/formal-pic.jpg";
 import ghostlyGamersImg from "../assets/images/ghostly-gamers.png";
 import autoAiderImg from "../assets/images/auto-aider.png";
 import ustpGPACalculatorImg from "../assets/images/ustp-gpa-calculator.png";
@@ -7,7 +8,7 @@ import yureime from "../assets/images/yureime.png";
 
 export const personalInfo = {
   name: "Glenson Montellano Ansin",
-  photo: { ghostAvatar },
+  photo: { light: formalPic, dark: ghostAvatar },
   university: "University of Science and Technology of Southern Philippines",
   location: "Cagayan de Oro, Philippines",
   about: {

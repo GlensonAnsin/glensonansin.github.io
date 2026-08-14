@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { ReactLenis } from 'lenis/react';
 import {
   Mail,
@@ -25,6 +26,7 @@ import { NavBar } from './components/nav-bar';
 import { StatusBar } from './components/status-bar';
 import { SectionHeader } from './components/section-header';
 import { personalInfo } from './data/personal-information';
+import { useTheme } from './hooks/use-theme-hook';
 
 const heroCode: CodeLine[] = [
   [
@@ -100,6 +102,7 @@ function App() {
   ];
 
   const [heroTyped, setHeroTyped] = useState(false);
+  const { theme } = useTheme();
 
   return (
     <main className="bg-bg text-fg min-h-screen">
@@ -189,15 +192,78 @@ function App() {
                   <span>Ansin_Glenson.jpg</span>
                 </div>
                 <div className="p-3">
-                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
-                    <img
-                      loading="lazy"
-                      height="1000"
-                      width="1000"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      alt={personalInfo.name}
-                      src={personalInfo.photo.ghostAvatar}
+                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-bg-inset">
+                    <AnimatePresence mode="sync">
+                      <motion.img
+                        key={theme}
+                        loading="lazy"
+                        height="1000"
+                        width="1000"
+                        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 ${
+                          theme === 'light'
+                            ? 'object-[50%_24%] scale-[1.14] group-hover:scale-[1.2]'
+                            : 'group-hover:scale-105'
+                        }`}
+                        alt={personalInfo.name}
+                        src={theme === 'dark' ? personalInfo.photo.dark : personalInfo.photo.light}
+                        initial={{
+                          clipPath: 'inset(0 0 100% 0)',
+                          filter: 'brightness(2.4) contrast(1.6) hue-rotate(130deg) saturate(3) blur(6px)',
+                        }}
+                        animate={{
+                          clipPath: 'inset(0 0 0% 0)',
+                          filter: [
+                            'brightness(2.4) contrast(1.6) hue-rotate(130deg) saturate(3) blur(6px)',
+                            'brightness(0.6) contrast(1.3) hue-rotate(-70deg) saturate(2) blur(2px)',
+                            'brightness(1.3) contrast(1.1) hue-rotate(20deg) saturate(1.4) blur(0.5px)',
+                            'brightness(1) contrast(1) hue-rotate(0deg) saturate(1) blur(0px)',
+                          ],
+                        }}
+                        exit={{
+                          clipPath: 'inset(100% 0 0 0)',
+                          filter: [
+                            'brightness(1) contrast(1) hue-rotate(0deg) saturate(1) blur(0px)',
+                            'brightness(1.3) contrast(1.2) hue-rotate(-40deg) saturate(2) blur(1px)',
+                            'brightness(2.2) contrast(1.6) hue-rotate(90deg) saturate(3) blur(5px)',
+                          ],
+                        }}
+                        transition={{ duration: 0.65, ease: 'easeInOut' }}
+                      />
+                    </AnimatePresence>
+
+                    {/* Digitize scanline sweep, replays on every theme switch */}
+                    <motion.div
+                      key={`scanline-${theme}`}
+                      className="pointer-events-none absolute inset-x-0 h-8 z-10"
+                      style={{
+                        background:
+                          'linear-gradient(to bottom, transparent, var(--accent-type) 45%, var(--accent-type) 55%, transparent)',
+                        boxShadow: '0 0 20px 4px var(--accent-type)',
+                      }}
+                      initial={{ top: '-10%', opacity: 0 }}
+                      animate={{ top: ['-10%', '105%'], opacity: [0, 0.9, 0.9, 0] }}
+                      transition={{ duration: 0.65, ease: 'easeInOut' }}
                     />
+
+                    {/* Horizontal glitch slices */}
+                    <motion.div
+                      key={`glitch-${theme}`}
+                      className="pointer-events-none absolute inset-0 z-10"
+                      initial={{ opacity: 1 }}
+                      animate={{ opacity: 0 }}
+                      transition={{ duration: 0.5, times: [0, 1] }}
+                    >
+                      {[0.2, 0.42, 0.6, 0.78].map((topPct, i) => (
+                        <motion.span
+                          key={i}
+                          className="absolute left-0 right-0 bg-accent-type/40 mix-blend-screen"
+                          style={{ top: `${topPct * 100}%`, height: '3px' }}
+                          initial={{ x: i % 2 === 0 ? '-6%' : '6%', opacity: 0.9 }}
+                          animate={{ x: '0%', opacity: 0 }}
+                          transition={{ duration: 0.4, delay: i * 0.05, ease: 'easeOut' }}
+                        />
+                      ))}
+                    </motion.div>
                   </div>
                 </div>
                 <div className="px-4 pb-4 pt-1 text-center">
