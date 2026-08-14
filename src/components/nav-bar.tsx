@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
-import { Download } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
+import { Download, Menu, X } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 
 const TABS = [
@@ -13,6 +13,7 @@ const TABS = [
 
 export function NavBar() {
   const [active, setActive] = useState('home');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,8 +33,8 @@ export function NavBar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 h-14 border-b border-border bg-bg-elevated/85 backdrop-blur-xl">
-      <div className="h-full max-w-6xl mx-auto px-3 sm:px-6 flex items-center gap-2 sm:gap-4">
+    <nav className="fixed top-0 inset-x-0 z-50 border-b border-border bg-bg-elevated/85 backdrop-blur-xl">
+      <div className="h-14 max-w-6xl mx-auto px-3 sm:px-6 flex items-center gap-2 sm:gap-4">
         <a href="#home" className="shrink-0 font-mono font-bold text-sm sm:text-base tracking-tight" aria-label="Home">
           <span className="text-accent-keyword">&lt;</span>
           <span className="text-fg">GA</span>
@@ -42,14 +43,15 @@ export function NavBar() {
 
         <div className="h-6 w-px bg-border shrink-0 hidden sm:block" />
 
-        <div className="flex-1 min-w-0 flex items-center gap-1 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        {/* Desktop: full tab strip */}
+        <div className="flex-1 min-w-0 hidden sm:flex items-center gap-1">
           {TABS.map((tab) => {
             const isActive = active === tab.id;
             return (
               <a
                 key={tab.id}
                 href={tab.href}
-                className={`relative shrink-0 px-3 py-1.5 rounded-md font-mono text-xs sm:text-sm whitespace-nowrap transition-colors duration-200 ${
+                className={`relative shrink-0 px-3 py-1.5 rounded-md font-mono text-sm whitespace-nowrap transition-colors duration-200 ${
                   isActive ? 'text-fg' : 'text-fg-muted hover:text-fg hover:bg-surface-hover'
                 }`}
               >
@@ -66,6 +68,13 @@ export function NavBar() {
           })}
         </div>
 
+        {/* Mobile: current tab label, menu opens the full list */}
+        <div className="flex-1 min-w-0 sm:hidden">
+          <span className="font-mono text-sm text-fg-muted truncate">
+            {TABS.find((t) => t.id === active)?.label ?? TABS[0].label}
+          </span>
+        </div>
+
         <div className="h-6 w-px bg-border shrink-0 hidden sm:block" />
 
         <a
@@ -80,7 +89,58 @@ export function NavBar() {
         </a>
 
         <ThemeToggle className="shrink-0" />
+
+        <button
+          type="button"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          className="sm:hidden shrink-0 w-9 h-9 rounded-md flex items-center justify-center text-fg-muted hover:text-fg hover:bg-surface-hover transition-colors duration-200"
+        >
+          {menuOpen ? <X size={18} /> : <Menu size={18} />}
+        </button>
       </div>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="sm:hidden overflow-hidden border-t border-border bg-bg-elevated"
+          >
+            <div className="px-3 py-2 flex flex-col">
+              {TABS.map((tab) => {
+                const isActive = active === tab.id;
+                return (
+                  <a
+                    key={tab.id}
+                    href={tab.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`px-3 py-2.5 rounded-md font-mono text-sm transition-colors duration-200 ${
+                      isActive ? 'text-fg bg-surface-hover' : 'text-fg-muted hover:text-fg hover:bg-surface-hover'
+                    }`}
+                  >
+                    {tab.label}
+                  </a>
+                );
+              })}
+              <a
+                href="/Ansin_Glenson_CV.pdf"
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)}
+                className="mt-1 inline-flex items-center gap-1.5 px-3 py-2.5 rounded-md border border-border text-sm font-mono text-fg-muted hover:text-fg hover:border-border-strong transition-colors duration-200"
+              >
+                <Download size={14} />
+                resume.pdf
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

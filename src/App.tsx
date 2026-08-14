@@ -10,6 +10,7 @@ import {
   GraduationCap,
   ExternalLink,
   Terminal,
+  FolderCode,
 } from 'lucide-react';
 
 import { ScrollProgress } from './components/ui/scroll-progress';
@@ -283,16 +284,39 @@ function App() {
           />
 
           <ScrollReveal delay={0.2}>
-            <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 place-items-center">
-              {personalInfo.projects.map((p) => (
-                <PinContainer title={p.link} href={p.link} key={p.projectName}>
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 place-items-center">
+              {personalInfo.projects.map((p) => {
+                const imgSrc = Object.values(p.img)[0] as string | undefined;
+                return (
+                <PinContainer
+                  title={p.link}
+                  href={p.link}
+                  key={p.projectName}
+                  containerClassName="h-[17rem] sm:h-[19rem]"
+                >
                   <div className="flex flex-col tracking-tight w-[75vw] sm:w-[80vw] max-w-[18rem] h-[16rem] sm:h-[18rem] rounded-xl overflow-hidden border border-border bg-bg-elevated">
                     <div className="relative flex-1 overflow-hidden">
-                      <img
-                        src={Object.values(p.img)[0] as string}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        alt={p.projectName}
-                      />
+                      {imgSrc ? (
+                        <img
+                          src={imgSrc}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          alt={p.projectName}
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-bg-inset">
+                          <div
+                            className="absolute inset-0 opacity-40"
+                            style={{
+                              backgroundImage: 'radial-gradient(var(--border) 1px, transparent 1px)',
+                              backgroundSize: '18px 18px',
+                            }}
+                          />
+                          <div className="relative flex flex-col items-center gap-2">
+                            <FolderCode size={30} className="text-fg-subtle" />
+                            <span className="font-mono text-[11px] text-fg-subtle">preview.pending</span>
+                          </div>
+                        </div>
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-bg-elevated via-bg-elevated/60 to-transparent" />
                     </div>
                     <div className="relative px-5 pb-5 -mt-10 z-10">
@@ -305,7 +329,8 @@ function App() {
                     </div>
                   </div>
                 </PinContainer>
-              ))}
+                );
+              })}
             </div>
           </ScrollReveal>
         </div>

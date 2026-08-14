@@ -3,6 +3,7 @@ import ghostlyGamersImg from "../assets/images/ghostly-gamers.png";
 import autoAiderImg from "../assets/images/auto-aider.png";
 import ustpGPACalculatorImg from "../assets/images/ustp-gpa-calculator.png";
 import luminaImg from "../assets/images/lumina.png";
+import yureime from "../assets/images/yureime.png";
 
 export const personalInfo = {
   name: "Glenson Montellano Ansin",
@@ -176,6 +177,30 @@ export const personalInfo = {
         "A production-grade Express.js starter kit crafted with TypeScript.",
       link: "https://github.com/GlensonAnsin/lumina",
       img: { luminaImg },
+    },
+    {
+      projectName: "YureiMe",
+      description: "Anime streaming platform.",
+      link: "https://yureime.vercel.app/",
+      img: {yureime},
+    },
+    {
+      projectName: "Villaria",
+      description: "A web and mobile application for home owners association. (WIP)",
+      link: "#",
+      img: {},
+    },
+    {
+      projectName: "Marque",
+      description: "A client approval hub and content engine for SMMs. (WIP)",
+      link: "#",
+      img: {},
+    },
+    {
+      projectName: "Autocast",
+      description: "An AI video auto-publisher in social media platforms. (WIP)",
+      link: "#",
+      img: {},
     },
   ],
 };
